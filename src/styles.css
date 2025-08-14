@@ -1,0 +1,436 @@
+:root {
+  --verde: #245501;
+  --verde-alerta: #143601;
+  --verde-boton: #1A4301;
+  --rojo-alerta: #800808;
+}
+
+/* ===== Body y Tipografía ===== */
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #f5f6fa;
+  color: #333;
+}
+
+h1, h2, h3 {
+  color: var(--verde);
+  margin: 0 0 10px 0;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* ===== Contenedores ===== */
+.container, .home-container {
+  max-width: 500px;
+  margin: auto;
+  padding: 20px;
+  padding-bottom: 100px; /* espacio para navbar y FAB */
+}
+
+/* ===== Logos ===== */
+.logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.logo img {
+  width: 120px;
+  max-width: 40%;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* ===== Cards Generales ===== */
+.card, .points-card, .recent-card, .daily-challenge {
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ===== Home Cards ===== */
+.points-card {
+  text-align: center;
+}
+
+.points-card h1 {
+  font-size: 2.5rem;
+  color: var(--verde-boton);
+  margin-top: 10px;
+}
+
+.recent-card h3, .daily-challenge h3 {
+  margin-bottom: 10px;
+}
+
+/* Daily Challenge */
+.daily-challenge {
+  background: linear-gradient(135deg, #2a6b1f, #1a4301);
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Lista de artículos recientes */
+.recent-card ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.recent-card li {
+  padding: 6px 0;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 0.95rem;
+}
+
+/* ===== Botones ===== */
+button {
+  background-color: var(--verde-boton);
+  color: #fff;
+  font-size: 16px;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+button:hover {
+  background-color: var(--verde-alerta);
+  transform: translateY(-2px);
+}
+
+/* ===== Inputs y Selects ===== */
+input, select {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+/* ===== FAB (Botón flotante) ===== */
+.fab {
+  position: fixed;
+  bottom: 90px;
+  right: 25px;
+  background: var(--verde-boton);
+  color: #fff;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+  transition: all 0.3s;
+}
+
+.fab:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.25);
+}
+
+/* ===== Navbar ===== */
+.navbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  box-shadow: 0 -4px 12px rgba(0,0,0,0.08);
+  display: flex;
+  justify-content: space-around;
+  padding: 12px 0;
+  font-size: 1.8rem;
+  z-index: 1000;
+}
+
+.navbar a {
+  color: var(--verde-boton);
+  text-decoration: none;
+  transition: transform 0.2s, color 0.2s;
+}
+
+.navbar a:hover {
+  transform: scale(1.2);
+  color: var(--verde-alerta);
+}
+
+/* ===== Alerts ===== */
+.alert {
+  padding: 12px;
+  border-radius: 12px;
+  margin-top: 15px;
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+.alert.success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.alert.error {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+/* ===== Historial y Rewards ===== */
+.card p {
+  font-size: 0.95rem;
+}
+
+.card button {
+  margin-top: 10px;
+}
+
+/* Historial: fechas y puntos */
+.card p span {
+  font-weight: bold;
+  color: var(--verde-boton);
+}
+
+/* ===== Responsivo ===== */
+
+/* Tablets */
+@media (max-width: 768px) {
+  .container, .home-container {
+    padding: 15px;
+  }
+
+  .points-card h1 {
+    font-size: 2rem;
+  }
+
+  .fab {
+    width: 55px;
+    height: 55px;
+    font-size: 26px;
+  }
+
+  .navbar {
+    font-size: 1.6rem;
+    padding: 10px 0;
+  }
+}
+
+/* Móviles */
+@media (max-width: 480px) {
+  h1, h2, h3 {
+    font-size: 1.4rem;
+  }
+
+  .points-card h1 {
+    font-size: 1.8rem;
+  }
+
+  .fab {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    bottom: 80px;
+    right: 20px;
+  }
+
+  .navbar {
+    font-size: 1.4rem;
+    background-color: #245501;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+  }
+
+  .logo img {
+    width: 100px;
+  }
+
+  .card, .points-card, .recent-card, .daily-challenge {
+    padding: 16px;
+  }
+}
+
+/* ===== QR Reader ===== */
+#qr-reader {
+  margin-top: 20px;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* ===== Flex layouts opcionales ===== */
+@media (min-width: 500px) {
+  .recent-card ul {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+}
+
+/* Perfil */
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background: #fff;
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.password-field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.password-field input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  background-color: #f9f9f9;
+}
+
+.toggle-password {
+  background: var(--verde-boton);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.toggle-password:hover {
+  background: var(--verde-alerta);
+  transform: translateY(-2px);
+}
+
+.reset-password {
+  background: #2a6b1f;
+  color: white;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 10px;
+  transition: all 0.3s;
+}
+
+.reset-password:hover {
+  background: var(--verde-alerta);
+  transform: translateY(-2px);
+}
+
+/* Responsivo */
+@media (max-width: 480px) {
+  .profile-card {
+    padding: 20px;
+  }
+
+  .toggle-password, .reset-password {
+    font-size: 0.9rem;
+    padding: 8px 10px;
+  }
+}
+
+/* ===== Toasts ===== */
+.toast {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 15px 25px;
+  border-radius: 12px;
+  color: #fff;
+  font-weight: bold;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 250px;
+  z-index: 2000;
+  animation: slideDown 0.3s ease;
+}
+
+.toast.success {
+  background-color: #28a745;
+}
+
+.toast.error {
+  background-color: #dc3545;
+}
+
+.toast-close {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+/* Animación */
+@keyframes slideDown {
+  from { transform: translate(-50%, -50px); opacity: 0; }
+  to { transform: translate(-50%, 0); opacity: 1; }
+}
+
+/* ===== Modal ===== */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3000;
+}
+
+.modal {
+  background: #fff;
+  padding: 25px;
+  border-radius: 16px;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-align: center;
+}
+
+.modal input {
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  width: 100%;
+  font-size: 1rem;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+/* Ajustes botones dentro del modal */
+.modal button {
+  flex: 1;
+  font-size: 1rem;
+}
