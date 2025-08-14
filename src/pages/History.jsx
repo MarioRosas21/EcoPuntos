@@ -8,19 +8,26 @@ export default function History() {
 
   return (
     <div className="container">
+          <div className="logo">
+        <img src="/ecoPuntosLogo.jpg" alt="EcoPuntos" />
+    </div>
       <h1>Historial de Reciclaje</h1>
-<PointsCard points={user.points} title="Total puntos acumulados" />
-      <div className="card">
+      <PointsCard points={user.points} title="Total puntos acumulados" />
+
+      <div className="history-card">
         {user.history?.length > 0 ? (
           user.history.map((item, i) => (
-            <p key={i}>
-              {new Date(item.date).toLocaleDateString()} - {item.material} - {item.points} pts
-            </p>
+            <div key={i} className="history-item">
+              <span>{new Date(item.date).toLocaleDateString()}</span>
+              <span>{item.material}</span>
+              <span>{item.points} pts</span>
+            </div>
           ))
         ) : (
           <p>No hay historial registrado</p>
         )}
       </div>
+
       <Navbar />
     </div>
   );

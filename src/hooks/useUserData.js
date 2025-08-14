@@ -1,8 +1,7 @@
-// hooks/useUserData.js
-import { useEffect, useState } from "react";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { useState, useEffect } from "react";
+import { getAuth } from "firebase/auth";
+import { doc, onSnapshot } from "firebase/firestore";
 import { db } from "../services/firebase";
-import { doc, getDoc } from "firebase/firestore";
 
 export default function useUserData() {
   const [user, setUser] = useState(null);
@@ -10,17 +9,24 @@ export default function useUserData() {
 
   useEffect(() => {
     const auth = getAuth();
-    const unsub = onAuthStateChanged(auth, async (u) => {
-      if (u) {
-        const ref = doc(db, "users", u.uid);
-        const snap = await getDoc(ref);
-        if (snap.exists()) {
-          setUser({ uid: u.uid, email: u.email, ...snap.data() });
-        }
+    const unsubscribeAuth = auth.onAuthStateChanged(async (user) => {
+      if (user) {
+        const userRef = doc(db, "users", user.uid);
+        // Listener en tiempo real
+        const unsubscribeSnap = onSnapshot(userRef, (docSnap) => {
+          if (docSnap.exists()) {
+            setUser(docSnap.data());
+            setLoading(false);
+          }
+        });
+        return () => unsubscribeSnap();
+      } else {
+        setUser(null);
+        setLoading(false);
       }
-      setLoading(false);
     });
-    return () => unsub();
+
+    return () => unsubscribeAuth();
   }, []);
 
   return { user, loading };

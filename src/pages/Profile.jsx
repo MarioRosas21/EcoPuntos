@@ -42,7 +42,9 @@ export default function Profile() {
           onClose={() => setToast(null)} 
         />
       )}
-
+    <div className="logo">
+        <img src="/ecoPuntosLogo.jpg" alt="EcoPuntos" />
+    </div>
       <h1>Perfil</h1>
       <div className="card profile-card">
         <p><strong>Nombre:</strong> {user.name}</p>

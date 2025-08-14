@@ -23,10 +23,12 @@ h1, h2, h3 {
 /* ===== Contenedores ===== */
 .container, .home-container {
   max-width: 500px;
-  margin: auto;
+  margin: auto;       /* Esto centra horizontalmente */
   padding: 20px;
-  padding-bottom: 100px; /* espacio para navbar y FAB */
+  padding-bottom: 100px;
+  text-align: center; /* Esto centra texto y contenido inline */
 }
+
 
 /* ===== Logos ===== */
 .logo {
@@ -433,4 +435,174 @@ input, select {
 .modal button {
   flex: 1;
   font-size: 1rem;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.modal .reward-code {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 1rem 0;
+  color: #0088FE;
+}
+
+.modal button {
+  background-color: #0088FE;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.modal button:hover {
+  background-color: #006FCC;
+}
+
+/* ===== Auth (Login/Registro) ===== */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  background: #f5f6fa;
+}
+
+.auth-card {
+  background: #fff;
+  padding: 30px 25px;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-align: center;
+}
+
+.auth-card input {
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.auth-card button {
+  padding: 12px;
+  border-radius: 12px;
+  background: var(--verde-boton);
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.auth-card button:hover {
+  background: var(--verde-alerta);
+  transform: translateY(-2px);
+}
+
+/* ===== Rewards Grid ===== */
+.rewards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.reward-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.reward-card img {
+  width: 50px;
+  margin: auto;
+}
+
+.reward-card button {
+  padding: 8px;
+  border-radius: 12px;
+  background: var(--verde-boton);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.reward-card button:hover {
+  background: var(--verde-alerta);
+  transform: translateY(-2px);
+}
+
+/* ===== History Card ===== */
+.history-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.95rem;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 6px 0;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .auth-card, .reward-card, .history-card {
+    padding: 20px;
+  }
+
+  .reward-card img {
+    width: 40px;
+  }
+
+  .history-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+}
+
+.navbar-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
 }
