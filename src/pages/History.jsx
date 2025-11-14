@@ -2,6 +2,7 @@ import useUserData from "../hooks/useUserData";
 import Navbar from "../components/Navbar";
 import PointsCard from "../components/PointsCard";
 
+
 export default function History() {
   const { user, loading } = useUserData();
   if (loading) return <p>Cargando...</p>;
