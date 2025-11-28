@@ -8,7 +8,7 @@ import { useState, useEffect } from "react";
 import { generateRewardCode } from "../utils/generateCode";
 import useUserData from "../hooks/useUserData";
 import { redeemReward } from "../services/firebase";
-
+//Cambio para que funcione el push
 const rewardsList = [
   { title: "Amazon Gift Card", points: 500, logo: "/logos/amazon.png" },
   { title: "Mercado Libre", points: 400, logo: "/logos/mercadoLibre.png" },
