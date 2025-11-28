@@ -7,6 +7,7 @@ import Scan from "./pages/Scan";
 import Rewards from "./pages/Rewards";
 import History from "./pages/History";
 import Profile from "./pages/Profile";
+import Know from "./pages/know";
 import "./styles.css";
 
 export default function App() {
@@ -20,6 +21,7 @@ export default function App() {
         <Route path="/rewards" element={<Rewards />} />
         <Route path="/history" element={<History />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/know" element={<Know />} />
       </Routes>
     </Router>
   );

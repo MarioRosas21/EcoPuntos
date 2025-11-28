@@ -1,0 +1,61 @@
+/* Fondo suave detrás del anuncio */
+.announcement-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0,0,0,0.60); /* un poco más oscuro */
+  z-index: 2000;
+}
+
+/* Card del anuncio (más grande) */
+.announcement-card {
+  background: white;
+  padding: 30px 20px; /* MÁS GRANDE */
+  border-radius: 20px;
+  max-width: 90%;         /* ocupa más espacio */
+  width: 380px;           /* antes 320px */
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  animation: announcementShow 0.25s ease;
+  position: relative;
+  color: #245501;
+  font-size: 1.1rem;      /* más grande */
+  font-weight: 600;
+  line-height: 1.4rem;    /* mejor lectura */
+}
+
+/* Botón de cierre */
+.announcement-close {
+  position: absolute;
+  top: 0px;
+  right: 2px;
+  background: transparent;
+  border: none;
+  font-size: 1.3rem;     /* más grande */
+  cursor: pointer;
+  color: #444;
+}
+
+.announcement-close:hover {
+  color: #900;
+}
+
+/* Animación */
+@keyframes announcementShow {
+  from { transform: scale(0.8); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+/* Ajustes móviles */
+@media (max-width: 480px) {
+  .announcement-card {
+    width: 60%;
+    padding: 30px;
+    font-size: 1rem;
+  }
+}

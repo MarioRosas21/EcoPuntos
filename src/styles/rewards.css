@@ -1,0 +1,163 @@
+/* =========================================
+   REWARDS PAGE – ESTILOS PROPIOS
+========================================= */
+
+:root {
+  --verde: #245501;
+  --verde-alerta: #143601;
+  --verde-boton: #1A4301;
+  --bg-light: #f5f6fa;
+}
+
+/* ===== CONTENEDOR ===== */
+.rewards-container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px 16px 120px;
+  text-align: center;
+}
+
+/* ===== TÍTULO PRINCIPAL ===== */
+.rewards-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--verde);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ===== NOMBRE DEL USUARIO ===== */
+.rewards-user {
+  font-size: 1rem;
+  color: #666;
+  margin: 4px 0 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ===== GRID DE RECOMPENSAS ===== */
+.rewards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+  gap: 16px;
+  margin-top: 14px;
+}
+
+.reward-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: transform .2s ease;
+}
+
+.reward-card:hover {
+  transform: translateY(-4px);
+}
+
+.reward-card img {
+  width: 45px;
+  margin: 0 auto;
+}
+
+.reward-card h3 {
+  margin: 4px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--verde);
+}
+
+.reward-card p {
+  margin: 0;
+  color: #333;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+/* ===== BOTÓN ===== */
+.reward-card button {
+  padding: 8px;
+  border-radius: 12px;
+  background: var(--verde-boton);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all .25s ease;
+}
+
+.reward-card button:hover {
+  background: var(--verde-alerta);
+  transform: translateY(-2px);
+}
+
+/* ===== MODAL ===== */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3000;
+}
+
+.modal {
+  background: #fff;
+  padding: 25px;
+  border-radius: 16px;
+  max-width: 380px;
+  width: 92%;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+.modal h2 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: var(--verde);
+}
+
+.reward-code {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin: 1rem 0;
+  color: #0088FE;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 480px) {
+
+  .rewards-title {
+    font-size: 1.25rem;
+  }
+
+  .rewards-user {
+    font-size: 0.9rem;
+  }
+
+  .reward-card img {
+    width: 40px;
+  }
+
+  .reward-card h3 {
+    font-size: 0.9rem;
+  }
+
+  .reward-card p {
+    font-size: 0.85rem;
+  }
+
+  .reward-card button {
+    font-size: 0.85rem;
+  }
+}

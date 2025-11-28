@@ -1,0 +1,156 @@
+/* ===== Página completamente centrada ===== */
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background: var(--bg-light);
+}
+
+/* ===== Card centrada ===== */
+.login-card {
+  background: #fff;
+  padding: 32px 28px;
+  border-radius: 18px;
+  width: 100%;
+  max-width: 380px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* CENTRA TODO */
+  text-align: center;    /* CENTRA TEXTOS */
+  gap: 18px;
+}
+
+/* ===== Logo ===== */
+.login-logo {
+  width: 130px;
+  height: auto;
+  border-radius: 16px;
+  display: block;
+  margin: 0 auto;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* ===== Inputs centrados ===== */
+.input-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* CENTRA LOS INPUTS */
+  gap: 12px;
+}
+
+.login-card input {
+  width: 85%;            /* MÁS PEQUEÑOS */
+  max-width: 260px;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid var(--gray-border);
+  margin: 0 auto;
+  text-align: left;
+}
+
+
+/* ===== Inputs ===== */
+.login-card input {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid var(--gray-border);
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.login-card input:focus {
+  outline: none;
+  border-color: var(--verde);
+  box-shadow: 0 0 4px rgba(36, 85, 1, 0.3);
+}
+
+/* ===== Botones ===== */
+.login-btn {
+  background: var(--verde-boton);
+  color: #fff;
+  padding: 14px;
+  border-radius: 12px;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+
+.login-btn:hover {
+  background: var(--verde-alerta);
+  transform: translateY(-2px);
+}
+
+/* ===== Enlaces ===== */
+.login-link {
+  color: var(--verde-boton);
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: 0.95rem;
+}
+
+.login-register-text {
+  font-size: 0.95rem;
+}
+
+/* ===== Animación ===== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ========== Responsivo ========== */
+@media (max-width: 480px) {
+  .login-card {
+    padding: 25px 20px;
+  }
+
+  .login-card h1 {
+    font-size: 1.6rem;
+  }
+
+  .login-card h2 {
+    font-size: 1.1rem;
+  }
+
+  .login-btn {
+    padding: 12px;
+  }
+
+  .login-link {
+    font-size: 0.9rem;
+  }
+}
+/* ===== Logo ===== */
+.login-logo {
+  width: 130px;
+  height: auto;
+  border-radius: 16px;
+  margin: 0 auto 10px;
+  display: block;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* ===== Input group ===== */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  padding: 0 10px;      /* reduce orillas */
+}
+
+/* Ajustar inputs más pequeños */
+.login-card input {
+  width: 100%;
+  max-width: 320px;    /* evita que se estiren demasiado */
+  margin: 0 auto;      /* centra los inputs */
+  padding: 12px;
+}

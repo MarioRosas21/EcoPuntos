@@ -2,19 +2,22 @@ import { useState } from "react";
 import { Html5QrcodeScanner } from "html5-qrcode";
 import { db } from "../services/firebase";
 import { doc, getDoc, updateDoc, arrayUnion } from "firebase/firestore";
+
 import Navbar from "../components/Navbar";
 import Toast from "../components/Toast";
 import PointsCard from "../components/PointsCard";
 import useUserData from "../hooks/useUserData";
+import AnnouncementSystem from "../components/AnnouncementSystem";   // ⬅️ IMPORTANTE
+
+import "../styles/home.css";
 
 export default function Home() {
   const { user, loading } = useUserData();
   const [toast, setToast] = useState(null);
 
-  if (loading) return <p>Cargando...</p>;
-  if (!user) return <p>No hay usuario</p>;
+  if (loading) return <p className="home-loading">Cargando...</p>;
+  if (!user) return <p className="home-loading">No hay usuario</p>;
 
-  // Ya no necesitas estados locales porque useUserData te da los datos en tiempo real
   const points = user?.points || 0;
   const recentItems = user?.history?.slice(-3).reverse() || [];
 
@@ -36,7 +39,9 @@ export default function Home() {
 
           if (userSnap.exists()) {
             const currentData = userSnap.data();
-            const yaRegistrado = currentData.history?.some((item) => item.qrId === qrId);
+            const yaRegistrado = currentData.history?.some(
+              (item) => item.qrId === qrId
+            );
 
             if (yaRegistrado) {
               setToast({ message: "QR ya registrado", type: "error" });
@@ -54,14 +59,18 @@ export default function Home() {
                 history: arrayUnion(nuevoRegistro),
               });
 
-              // ❌ NO necesitas setPoints ni setRecentItems
-              // ✅ useUserData con onSnapshot actualizará automáticamente
-              setToast({ message: "¡Registro exitoso de artículo!", type: "success" });
+              setToast({
+                message: "¡Registro exitoso de artículo!",
+                type: "success",
+              });
             }
           }
         } catch (error) {
           console.error("Error al leer el QR:", error);
-          setToast({ message: "¡Registro fallido de artículo!", type: "error" });
+          setToast({
+            message: "¡Registro fallido de artículo!",
+            type: "error",
+          });
         }
 
         scanner.clear();
@@ -73,38 +82,69 @@ export default function Home() {
   };
 
   return (
-    <div className="home-container">
-      {toast && <Toast message={toast.message} type={toast.type} onClose={() => setToast(null)} />}
-      <div className="logo">
-        <img src="/ecoPuntosLogo.jpg" alt="EcoPuntos" />
-      </div>
-      <h2>Bienvenido {user.name}</h2>
-      <PointsCard points={points} title="Tus puntos acumulados" />
+    <div className="home-page">
 
-      <div className="recent-card">
-        <h3>Artículos recientes</h3>
-        <ul>
-          {recentItems.length > 0 ? (
-            recentItems.map((item, index) => (
-              <li key={index}>
-                {item.material} – {item.points} pts –{" "}
-                {new Date(item.date).toLocaleDateString()}
-              </li>
-            ))
-          ) : (
-            <li>No hay artículos recientes</li>
-          )}
-        </ul>
-      </div>
+      {/* 🔔 SISTEMA GLOBAL DE ANUNCIOS */}
+      <AnnouncementSystem />
 
-      <div className="daily-challenge">
-        <h3>Reto diario</h3>
-        <p>Registra 3 artículos hoy y gana 15 pts extra</p>
-      </div>
+      {toast && (
+        <Toast
+          message={toast.message}
+          type={toast.type}
+          onClose={() => setToast(null)}
+        />
+      )}
 
-      <button className="fab" onClick={handleScanQR}>➕</button>
-      <div id="qr-reader" style={{ width: "100%" }}></div>
+      {/* Contenido scrollable */}
+      <main className="home-scroll">
+        <div className="home-container">
+          <header className="home-header">
+            <div className="home-logo">
+              <img src="/ecoPuntosLogo.jpg" alt="EcoPuntos" />
+            </div>
+            <h2 className="home-title">Bienvenido {user.name}</h2>
+          </header>
 
+          <PointsCard points={points} title="Tus puntos acumulados" />
+
+          <section className="home-section recent-card">
+            <h3>Artículos recientes</h3>
+            <ul>
+              {recentItems.length > 0 ? (
+                recentItems.map((item, index) => (
+                  <li key={index}>
+                    <span className="item-material">{item.material}</span>
+                    <span className="item-points">{item.points} pts</span>
+                    <span className="item-date">
+                      {new Date(item.date).toLocaleDateString()}
+                    </span>
+                  </li>
+                ))
+              ) : (
+                <li>No hay artículos recientes</li>
+              )}
+            </ul>
+          </section>
+
+          <section className="home-section daily-challenge">
+            <h3>Reto diario</h3>
+            <p>Registra 3 artículos hoy y gana 15 pts extra</p>
+          </section>
+
+          <section className="home-section qr-section">
+            <h3>Escanear QR</h3>
+            <p className="qr-help-text">
+              Toca el botón "+" para abrir la cámara y registrar un nuevo artículo.
+            </p>
+            <button className="fab" onClick={handleScanQR}>
+              ➕
+            </button>
+            <div id="qr-reader" className="qr-reader-container"></div>
+          </section>
+        </div>
+      </main>
+
+      {/* Navbar fijo */}
       <Navbar />
     </div>
   );

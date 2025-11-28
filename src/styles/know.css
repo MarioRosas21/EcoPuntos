@@ -1,0 +1,133 @@
+/* =========================================
+   Estilos para vista KNOW (¿Sabías que?)
+========================================= */
+
+:root {
+  --verde: #245501;
+  --verde-boton: #1A4301;
+  --bg-light: #f5f6fa;
+  --card-radius: 18px;
+  --shadow-soft: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.know-page {
+  min-height: 100vh;
+  background: var(--bg-light);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.know-container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px 16px 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.know-logo {
+  display: flex;
+  justify-content: center;
+}
+
+.know-logo img {
+  width: 110px;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.know-title {
+  text-align: center;
+  color: var(--verde);
+  font-size: 1.7rem;
+  margin-bottom: 10px;
+}
+
+.know-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.know-card {
+  background: white;
+  border-radius: var(--card-radius);
+  padding: 18px 16px;
+  box-shadow: var(--shadow-soft);
+  position: relative;
+  overflow: hidden;
+}
+
+.know-card h3 {
+  margin: 0 0 8px;
+  color: var(--verde-boton);
+  font-size: 1.2rem;
+}
+
+.know-card p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+/* ========= TIPOS ========= */
+
+.know-card.anuncio {
+  background: #e8f5e9;
+  border-left: 6px solid var(--verde-boton);
+}
+
+.know-card.video {
+  padding-bottom: 20px;
+}
+
+/* ========= BADGE ========== */
+
+.badge {
+  background: var(--verde-boton);
+  color: white;
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  border-radius: 8px;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+
+/* ========= VIDEO RESPONSIVE ========== */
+
+.know-video-container {
+  margin-top: 10px;
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+}
+
+.know-video-container iframe {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: none;
+  left: 0;
+  top: 0;
+  border-radius: 12px;
+}
+
+/* ========= Responsive ========= */
+
+@media (max-width: 480px) {
+  .know-container {
+    padding: 20px 20px 120px;
+  }
+
+  .know-title {
+    font-size: 1.5rem;
+  }
+
+  .know-card h3 {
+    font-size: 1.1rem;
+  }
+}

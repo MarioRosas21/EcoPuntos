@@ -1,11 +1,10 @@
 import React from "react";
-import "../styles.css";
 
 export default function PointsCard({ points, title = "Tus puntos acumulados" }) {
   return (
     <div className="points-card">
-      <p>{title}</p>
-      <h1>{points} pts</h1>
+      <p className="points-title">{title}</p>
+      <h1 className="points-value">{points} pts</h1>
     </div>
   );
 }
