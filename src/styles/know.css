@@ -1,109 +1,299 @@
-/* =========================================
-   Estilos para vista KNOW (¿Sabías que?)
-========================================= */
-
-:root {
-  --verde: #245501;
-  --verde-boton: #1A4301;
-  --bg-light: #f5f6fa;
-  --card-radius: 18px;
-  --shadow-soft: 0 8px 20px rgba(0, 0, 0, 0.08);
-}
-
+/* ===== KNOW PAGE ===== */
 .know-page {
   min-height: 100vh;
-  background: var(--bg-light);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
+  background: linear-gradient(to bottom right, #ecfdf5, #f0fdf4, #f0fdfa);
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
+/* ===== ELEMENTOS DECORATIVOS DE FONDO ===== */
+.know-bg-blob {
+  position: fixed;
+  width: 24rem;
+  height: 24rem;
+  border-radius: 50%;
+  mix-blend-mode: multiply;
+  filter: blur(4rem);
+  opacity: 0.3;
+  z-index: 0;
+}
+
+.know-bg-blob-1 {
+  top: -5rem;
+  right: -5rem;
+  background-color: #bbf7d0;
+  animation: blob 8s infinite;
+}
+
+.know-bg-blob-2 {
+  bottom: -5rem;
+  left: -5rem;
+  background-color: #99f6e4;
+  animation: blob 8s infinite;
+  animation-delay: 2s;
+}
+
+.know-bg-blob-3 {
+  top: 50%;
+  left: 50%;
+  background-color: #fde68a;
+  animation: blob 8s infinite;
+  animation-delay: 4s;
+}
+
+@keyframes blob {
+  0%, 100% { 
+    transform: translate(0, 0) scale(1); 
+  }
+  25% { 
+    transform: translate(30px, -60px) scale(1.1); 
+  }
+  50% { 
+    transform: translate(-30px, 30px) scale(0.9); 
+  }
+  75% { 
+    transform: translate(60px, 60px) scale(1.05); 
+  }
+}
+
+/* ===== CONTAINER ===== */
 .know-container {
-  max-width: 500px;
+  position: relative;
+  z-index: 1;
+  max-width: 42rem;
   margin: 0 auto;
-  padding: 20px 16px 120px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+  padding: 2rem 1rem 0;
 }
 
-.know-logo {
+/* ===== HEADER ===== */
+.know-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.know-logo-wrapper {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 1.5rem;
+}
+
+.know-logo-wrapper img {
+  width: 7rem;
+  height: 7rem;
+  border-radius: 50%;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
+  border: 4px solid white;
+  object-fit: cover;
+}
+
+.know-logo-badge {
+  position: absolute;
+  bottom: -0.5rem;
+  right: -0.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: linear-gradient(to bottom right, #4ade80, #10b981);
+  border-radius: 50%;
+  border: 3px solid white;
   display: flex;
+  align-items: center;
   justify-content: center;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
-.know-logo img {
-  width: 110px;
-  border-radius: 14px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+.leaf-badge-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: white;
+}
+
+.know-title-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.know-title-icon {
+  width: 3rem;
+  height: 3rem;
+  background: linear-gradient(to bottom right, #fbbf24, #f59e0b);
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px -1px rgba(251, 191, 36, 0.3);
+  animation: pulse-glow 2s infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { 
+    transform: scale(1);
+    box-shadow: 0 4px 6px -1px rgba(251, 191, 36, 0.3);
+  }
+  50% { 
+    transform: scale(1.05);
+    box-shadow: 0 8px 12px -2px rgba(251, 191, 36, 0.5);
+  }
+}
+
+.bulb-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: white;
 }
 
 .know-title {
-  text-align: center;
-  color: var(--verde);
-  font-size: 1.7rem;
-  margin-bottom: 10px;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0;
 }
 
+.know-subtitle {
+  color: #6b7280;
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* ===== LISTA DE HECHOS ===== */
 .know-list {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
 }
 
+/* ===== KNOW CARD ===== */
 .know-card {
-  background: white;
-  border-radius: var(--card-radius);
-  padding: 18px 16px;
-  box-shadow: var(--shadow-soft);
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(24px);
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.5);
   position: relative;
   overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.know-card:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px);
+}
+
+/* Icono de la tarjeta */
+.know-card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.75rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.card-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: white;
 }
 
 .know-card h3 {
-  margin: 0 0 8px;
-  color: var(--verde-boton);
-  font-size: 1.2rem;
+  margin: 0 0 0.75rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1f2937;
+  line-height: 1.4;
 }
 
 .know-card p {
   margin: 0;
-  font-size: 0.95rem;
-  color: #333;
+  font-size: 1rem;
+  color: #4b5563;
+  line-height: 1.6;
 }
 
-/* ========= TIPOS ========= */
+/* ===== TIPOS DE TARJETA ===== */
 
+/* Tipo: Dato */
+.know-card.dato .know-card-icon {
+  background: linear-gradient(to bottom right, #4ade80, #10b981);
+}
+
+.know-card.dato {
+  border-left: 4px solid #10b981;
+}
+
+/* Tipo: Anuncio */
 .know-card.anuncio {
-  background: #e8f5e9;
-  border-left: 6px solid var(--verde-boton);
+  background: linear-gradient(135deg, rgba(254, 243, 199, 0.9), rgba(253, 230, 138, 0.8));
+  border-left: 4px solid #fbbf24;
+}
+
+.know-card.anuncio .know-card-icon {
+  background: linear-gradient(to bottom right, #fbbf24, #f59e0b);
+}
+
+.know-card.anuncio h3 {
+  color: #78350f;
+}
+
+.know-card.anuncio p {
+  color: #92400e;
+}
+
+/* Tipo: Video */
+.know-card.video .know-card-icon {
+  background: linear-gradient(to bottom right, #3b82f6, #2563eb);
 }
 
 .know-card.video {
-  padding-bottom: 20px;
+  border-left: 4px solid #3b82f6;
+  padding-bottom: 1.5rem;
 }
 
-/* ========= BADGE ========== */
-
+/* ===== BADGE (Nuevo) ===== */
 .badge {
-  background: var(--verde-boton);
-  color: white;
-  padding: 4px 10px;
-  font-size: 0.75rem;
-  border-radius: 8px;
   position: absolute;
-  top: 12px;
-  right: 12px;
+  top: 1rem;
+  right: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  background: linear-gradient(to right, #10b981, #059669);
+  color: white;
+  padding: 0.5rem 0.875rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.3);
+  animation: badge-pulse 2s infinite;
 }
 
-/* ========= VIDEO RESPONSIVE ========== */
+@keyframes badge-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
 
+.badge-icon {
+  width: 0.875rem;
+  height: 0.875rem;
+}
+
+/* ===== VIDEO RESPONSIVE ===== */
 .know-video-container {
-  margin-top: 10px;
+  margin-top: 1rem;
   position: relative;
   width: 100%;
   height: 0;
   padding-bottom: 56.25%;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
 .know-video-container iframe {
@@ -113,21 +303,43 @@
   border: none;
   left: 0;
   top: 0;
-  border-radius: 12px;
 }
 
-/* ========= Responsive ========= */
+/* ===== NAVBAR SPACER ===== */
+.navbar-spacer {
+  height: 6rem;
+}
 
-@media (max-width: 480px) {
+/* ===== RESPONSIVE ===== */
+@media (max-width: 640px) {
   .know-container {
-    padding: 20px 20px 120px;
+    padding: 1.5rem 1rem 0;
   }
 
   .know-title {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
+  }
+
+  .know-subtitle {
+    font-size: 0.875rem;
+  }
+
+  .know-card {
+    padding: 1.25rem;
   }
 
   .know-card h3 {
-    font-size: 1.1rem;
+    font-size: 1.125rem;
+  }
+
+  .know-card p {
+    font-size: 0.9375rem;
+  }
+
+  .badge {
+    top: 0.75rem;
+    right: 0.75rem;
+    padding: 0.375rem 0.75rem;
+    font-size: 0.8125rem;
   }
 }
