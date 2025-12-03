@@ -5,7 +5,7 @@ import Navbar from "../components/Navbar";
 import Toast from "../components/Toast";
 import { getAuth, updatePassword, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import "../../src/styles/Profile.css";
+import "../../src/styles/profile.css";
 
 export default function Profile() {
   const { user, loading } = useUserData();
