@@ -1,0 +1,158 @@
+/* 🔥 OVERLAY DEL MODAL — SIEMPRE HASTA ARRIBA */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0,0,0,0.75);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 1rem;
+  box-sizing: border-box;
+
+  z-index: 99999 !important; /* 🔥 ARRIBA DE TODO */
+}
+
+/* 🔥 CARD DEL MODAL */
+.modal-card {
+  background: #ffffff;
+  padding: 2rem;
+  width: 100%;
+  max-width: 400px;
+
+  border-radius: 1rem;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+
+  position: relative;
+  text-align: center;
+
+  max-height: 90vh;
+  overflow-y: auto;
+
+  z-index: 100000 !important; /* 🔥 AÚN MÁS ARRIBA */
+  box-sizing: border-box;
+}
+
+/* ✨ Animación Fade + Scale */
+.modal-fade {
+  animation: fadeScaleIn 0.35s ease forwards;
+}
+
+@keyframes fadeScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ❌ Botón cerrar */
+.modal-close {
+  position: absolute;
+  top: .7rem;
+  right: .7rem;
+
+  background: #fecaca;
+  border: 1px solid #fca5a5;
+  color: #b91c1c;
+
+  width: 32px;
+  height: 32px;
+  border-radius: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 1.2rem;
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.modal-close:hover {
+  background: #fca5a5;
+}
+
+/* 📄 Inputs */
+.modal-form input {
+  width: 100%;
+  padding: .8rem;
+  margin: .5rem 0;
+  border-radius: .5rem;
+
+  border: 1px solid #d1d5db;
+  font-size: 1rem;
+
+  transition: 0.2s;
+}
+
+.modal-form input:focus {
+  outline: none;
+  border-color: #16a34a;
+  box-shadow: 0 0 0 2px rgba(22,163,74,0.2);
+}
+
+/* 💳 Botón pagar */
+.modal-pay-btn {
+  width: 100%;
+  padding: 1rem;
+  margin-top: .7rem;
+
+  background: #16a34a;
+  color: white;
+
+  border: none;
+  font-weight: bold;
+
+  border-radius: .5rem;
+  cursor: pointer;
+
+  transition: background 0.2s;
+}
+
+.modal-pay-btn:hover {
+  background: #15803d;
+}
+
+/* 📱 RESPONSIVIDAD PARA MÓVIL */
+@media (max-width: 480px) {
+
+  .modal-card {
+    padding: 1.5rem;
+    border-radius: 0.8rem;
+    max-height: 88vh;
+  }
+
+  .modal-form input {
+    padding: 0.7rem;
+    font-size: .95rem;
+  }
+
+  .modal-pay-btn {
+    padding: 0.9rem;
+    font-size: 1rem;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  p {
+    font-size: .95rem;
+  }
+
+  .modal-close {
+    width: 30px;
+    height: 30px;
+    font-size: 1.1rem;
+  }
+}
